@@ -1,0 +1,19 @@
+* C:\Users\ahmetcan.akuz\Documents\GitHub\EE463_2022_Hardware_Project\Components\LM555\LM555_Astable_Mode.asc
+XU1 0 N003 N006 N001 N007 N003 N002 N001 NE555
+V1 N001 0 5
+C1 N007 0 0.01µ
+R1 N001 N002 500
+R2 N003 N005 50k
+C2 N003 0 0.1n
+R4 N006 0 10
+D1 N002 N005 1N4148
+D2 N004 N002 1N4148
+R3 N004 N003 80k
+.model D D
+.lib C:\Users\ahmetcan.akuz\Documents\LTspiceXVII\lib\cmp\standard.dio
+.tran 1m
+* t_high=ln(2)(R1+R2)C2
+* t_low=ln(2)R2C
+.lib NE555.sub
+.backanno
+.end

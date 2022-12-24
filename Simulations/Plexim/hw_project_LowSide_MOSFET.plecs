@@ -47,7 +47,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 210; 1534, 736]
+    Location      [1, 134; 1535, 736]
     ZoomFactor    0.999997
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -285,11 +285,11 @@ Plecs {
       Position      [1275, 250]
       Direction     up
       Flipped       off
-      Location      [0, 332; 883, 964]
+      Location      [0, 328; 883, 964]
       State         "AAAA/wAAAAD9AAAAAgAAAAEAAAAAAAAAAPwCAAAAA/sAAAAQAFoAbwBvA"
 "G0AQQByAGUAYQAAAAAA/////wAAAD8A////+wAAABQAUwBhAHYAZQBkAFYAaQBlAHcAcwAAAAAA//"
 "///wAAAH4A////+wAAAAwAVAByAGEAYwBlAHMAAAAAAP////8AAAB+AP///wAAAAMAAAAAAAAAAPw"
-"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAABFAAAAL3AAAA"
+"BAAAAAfsAAAAUAEQAYQB0AGEAVwBpAGQAZwBlAHQAAAAAAP////8AAABfAP///wAABFAAAAL8AAAA"
 "BAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAOAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAA"
 "AAAAA=="
       SavedViews    "AAAAAgAAAAA="
@@ -350,7 +350,7 @@ Plecs {
       Type          Scope
       Name          "Scope3"
       Show          on
-      Position      [1210, 25]
+      Position      [1215, 20]
       Direction     up
       Flipped       off
       Location      [-1440, 263; -557, 895]
@@ -1550,7 +1550,7 @@ Plecs {
       SrcTerminal   3
       Points        [955, 15; 1025, 15]
       Branch {
-        Points        [1090, 15; 1090, 20; 1140, 20; 1140, 25]
+        Points        [1090, 15; 1090, 20]
         DstComponent  "Scope3"
         DstTerminal   1
       }

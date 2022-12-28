@@ -1,23 +1,23 @@
 Circuit: * C:\Users\ahmetcan.akuz\Documents\GitHub\EE463_2022_Hardware_Project\Simulations\Gate_Driver\Gate_Driver.asc
 
-Limiting rise time of source v1 to 4e-005
-Limiting fall time of source v1 to 4e-005
+Limiting rise time of source v1 to 2e-005
+Limiting fall time of source v1 to 2e-005
 Direct Newton iteration for .op point succeeded.
 
-Date: Tue Dec 27 23:31:20 2022
-Total elapsed time: 0.556 seconds.
+Date: Wed Dec 28 21:33:18 2022
+Total elapsed time: 1.445 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 205584
-traniter = 205558
-tranpoints = 76971
-accept = 57059
-rejected = 19912
-matrix size = 13
-fillins = 0
+totiter = 450061
+traniter = 450035
+tranpoints = 132786
+accept = 95848
+rejected = 36938
+matrix size = 19
+fillins = 3
 solver = Normal
-Matrix Compiler1: 522 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: off  [0.1]/0.1/0.1
+Matrix Compiler1: 1018 bytes object code size  0.2/0.1/[0.1]
+Matrix Compiler2: off  [0.1]/0.1/0.2
 

@@ -1,0 +1,29 @@
+** This code will gradually increase the duty cycle of the PWM signal driving the buck converter as the output current approaches the target value of 12 A. The duty cycle will be set to maximum (255) once the output current reaches or exceeds the target value. **
+const int CURRENT_SENSE_PIN = A0;  // Pin for sensing output current
+const int PWM_PIN = 9;             // Pin for controlling duty cycle
+const int REFERENCE_RESISTOR = 10; // Value of reference resistor (in ohms)
+
+void setup() {
+  // Set PWM pin to output mode
+  pinMode(PWM_PIN, OUTPUT);
+
+  // Set initial duty cycle to 0
+  analogWrite(PWM_PIN, 0);
+}
+
+void loop() {
+  // Read output current
+  int current_sense_voltage = analogRead(CURRENT_SENSE_PIN);
+  float output_current = (float)current_sense_voltage / 1023.0 * 5.0 / REFERENCE_RESISTOR;
+
+  // Calculate desired duty cycle
+  int duty_cycle = 0;
+  if (output_current < 12) {
+    duty_cycle = map(output_current, 0, 12, 0, 255);
+  } else {
+    duty_cycle = 255;
+  }
+
+  // Set duty cycle
+  analogWrite(PWM_PIN, duty_cycle);
+}

@@ -1,0 +1,38 @@
+**This code uses the Arduino analogWrite function to set the duty cycle of the PWM signal driving the buck converter based on the error between the target output current and the measured output current, as well as the integral of the error over time. The constants Kp and Ki are the proportional and integral gains, respectively, and can be adjusted to fine-tune the performance of the PI controller.**
+const int CURRENT_SENSE_PIN = A0;  // Pin for sensing output current
+const int PWM_PIN = 9;             // Pin for controlling duty cycle
+const int REFERENCE_RESISTOR = 10; // Value of reference resistor (in ohms)
+
+const float TARGET_CURRENT = 12.0; // Target output current (in A)
+const float Kp = 0.1;              // Proportional gain
+const float Ki = 0.01;             // Integral gain
+
+float error = 0;                   // Current error
+float integral = 0;                // Integral of error
+
+void setup() {
+  // Set PWM pin to output mode
+  pinMode(PWM_PIN, OUTPUT);
+
+  // Set initial duty cycle to 0
+  analogWrite(PWM_PIN, 0);
+}
+
+void loop() {
+  // Read output current
+  int current_sense_voltage = analogRead(CURRENT_SENSE_PIN);
+  float output_current = (float)current_sense_voltage / 1023.0 * 5.0 / REFERENCE_RESISTOR;
+
+  // Calculate error and integral
+  error = TARGET_CURRENT - output_current;
+  integral = integral + error * Ki;
+
+  // Calculate duty cycle
+  int duty_cycle = Kp * error + integral;
+
+  // Constrain duty cycle to [0, 255]
+  duty_cycle = constrain(duty_cycle, 0, 255);
+
+  // Set duty cycle
+  analogWrite(PWM_PIN, duty_cycle);
+}

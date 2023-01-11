@@ -8,31 +8,19 @@ int PotValue;
 double AmpThrough;
 double RefAmp;
 void setup() {
-  pinMode(9, OUTPUT); //Hangi pinden verilecek onu anlatıyor 9.pin yidir
-  Serial.begin(9600);
-  // --Pins D9 and D10 - 15.63 kHz 10bit
-  //TCCR1A = 0b00000011; //
-  //TCCR1B = 0b00001001; // 
-
-  // --Pins D9 and D10 - 7.82 kHz 10bit
-  TCCR1A = 0b00000011; //
-  TCCR1B = 0b00000001; // 
-
-  // --Pins D9 and D10 - 1.93 kHz 10bit
-  //TCCR1A = 0b00000011; //
-  //TCCR1B = 0b00001010; //
+  pinMode(5, OUTPUT); //Hangi pinden verilecek onu anlatıyor 9.pin yidir
 }
 
 void loop() {
-  if (a < 100) // Softstart 20 seconds
+  if (a < 60) // Softstart 20 seconds
   {
     delay(1000);
-    a = a + 5;
-    a = constrain(a,0,101); //%10 duty max
-    analogWrite(9,a); // ilk sayı hangi pin olduğ, ikinci sayı 0 ile 1023 arasında Duty cycle veriyor linear ilişki 0 da %0 1023 te %100
+    a = a + 3;
+    a = constrain(a,0,61); //%25 duty max
+    analogWrite(5,a); // ilk sayı hangi pin olduğ, ikinci sayı 0 ile 1023 arasında Duty cycle veriyor linear ilişki 0 da %0 1023 te %100
     curDuty = a;
   }
-  else if (a >= 100) // ON off kontrol
+  else if (a >= 60) // ON off kontrol
   {
     PotValue = analogRead(A3);
     PotValue = map(PotValue,0,1023,0,3);
@@ -44,19 +32,19 @@ void loop() {
       if (AmpThrough > (RefAmp + 0.1))
       {
         b = curDuty;
-        b = b-5;
-        b = constrain(b,1,1022);
+        b = b-2;
+        b = constrain(b,1,191);
         curDuty = b;
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(400);
       }
       else if (AmpThrough < (RefAmp - 0.1))
       {
         b = curDuty;
-        b = b+5;
-        b = constrain(b,1,1022);
+        b = b+2;
+        b = constrain(b,1,191);
         curDuty = b;
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(400);
       }
     }
@@ -66,21 +54,19 @@ void loop() {
       if (AmpThrough > (RefAmp + 0.07))
       {
         b = curDuty;
-        b = b-5;
-        b = constrain(b,1,1022);
+        b = b-2;
+        b = constrain(b,1,191);
         curDuty = b;
-        Serial.println(b);
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(200);
       }
       else if (AmpThrough < (RefAmp - 0.07) )
       {
         b = curDuty;
-        b = b+5;
-        b = constrain(b,1,1022);
+        b = b+2;
+        b = constrain(b,1,191);
         curDuty = b;
-        Serial.println(b);
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(200);
       }
     }
@@ -90,25 +76,25 @@ void loop() {
       if (AmpThrough >= (RefAmp + 0.05))
       {
         b = curDuty;
-        b = b-5;
-        b = constrain(b,1,1022);
+        b = b-2;
+        b = constrain(b,1,191);
         curDuty = b;
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(100);
       }
       else if (AmpThrough < (RefAmp - 0.05))
       {
         b = curDuty;
-        b = b+5;
-        b = constrain(b,1,1022);
+        b = b+2;
+        b = constrain(b,1,191);
         curDuty = b;
-        analogWrite(9,b);
+        analogWrite(5,b);
         delay(100);
       }
     }
     else if (AmpThrough > 15)
     {
-    analogWrite(9,0); // akım 15i geçti duty 0 ver
+    analogWrite(5,0); // akım 15i geçti duty 0 ver
     delay(10000); //10 saniye bekletiyor
     }
   }

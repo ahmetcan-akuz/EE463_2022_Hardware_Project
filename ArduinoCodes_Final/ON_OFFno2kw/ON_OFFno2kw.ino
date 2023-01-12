@@ -58,7 +58,7 @@ void loop() {
         b = constrain(b,1,191);
         curDuty = b;
         analogWrite(5,b);
-        delay(200);
+        delay(300);
       }
       else if (AmpThrough < (RefAmp - 0.07) )
       {
@@ -67,7 +67,7 @@ void loop() {
         b = constrain(b,1,191);
         curDuty = b;
         analogWrite(5,b);
-        delay(200);
+        delay(300);
       }
     }
     else if (PotValue == 2 && AmpThrough < 15) //1.5 A
@@ -80,7 +80,7 @@ void loop() {
         b = constrain(b,1,191);
         curDuty = b;
         analogWrite(5,b);
-        delay(100);
+        delay(200);
       }
       else if (AmpThrough < (RefAmp - 0.05))
       {
@@ -89,7 +89,7 @@ void loop() {
         b = constrain(b,1,191);
         curDuty = b;
         analogWrite(5,b);
-        delay(100);
+        delay(200);
       }
     }
     else if (AmpThrough > 15)
